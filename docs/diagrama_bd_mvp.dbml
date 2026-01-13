@@ -1,0 +1,31 @@
+Table users {
+  id int [pk, increment]
+  name varchar
+  email varchar [unique]
+  password varchar
+  role varchar
+  status varchar
+  created_at timestamp
+}
+
+Table rooms {
+  id int [pk, increment]
+  title varchar
+  description text
+  price decimal
+  capacity int
+  type varchar
+  is_available boolean
+}
+
+Table bookings {
+  id int [pk, increment]
+  user_id int
+  room_id int
+  start_date date
+  end_date date
+  status varchar
+}
+
+Ref: bookings.user_id > users.id
+Ref: bookings.room_id > rooms.id
